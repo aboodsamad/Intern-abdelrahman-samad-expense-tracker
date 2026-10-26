@@ -1,10 +1,9 @@
-import { useState } from "react";
-import type { Transaction } from "./models/Transaction";
 import { TransactionForm } from "./TransactionManagement/TransactionForm";
-import { TransactionList } from "./TransactionManagement/transactionList";
+import { TransactionList } from "./TransactionManagement/TransactionList";
+import { useTransactions } from "./Hooks/hooks";
 
 function App() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const { transactions, setTransactions} = useTransactions();
 
   return (
     <div className="app">
