@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app">
       <TransactionForm setTransactions={setTransactions} />
-      <TransactionList transactions={transactions} />
+      <TransactionList transactions={transactions} setTransactions={setTransactions}/>
     </div>
   );
 }
