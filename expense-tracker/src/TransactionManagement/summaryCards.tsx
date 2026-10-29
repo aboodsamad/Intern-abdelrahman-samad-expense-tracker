@@ -33,7 +33,7 @@ export function SummaryCards({ transactions }: Props) {
     <div className="summary-cards">
       <div>Income: ${income.toFixed(2)}</div>
       <div>Expenses: ${expenses.toFixed(2)}</div>
-      <div>Balance: ${balance.toFixed(2)}</div>
+      <div>Balance: {balance < 0 ? "-" : ""}${Math.abs(balance).toFixed(2)}</div>
       <div>
         Top category: {topCategory} (${topAmount.toFixed(2)})
       </div>

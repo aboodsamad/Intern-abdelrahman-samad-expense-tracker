@@ -4,6 +4,7 @@ import { useTransactions } from "./Hooks/hooks";
 import { SummaryCards } from "./TransactionManagement/summaryCards";
 import { expenseCategories, incomeCategories } from "./models/Transaction";
 import { useState } from "react";
+import { Charts } from "./TransactionManagement/Charts";
 
 const allCategories = [...new Set([...expenseCategories, ...incomeCategories])];
 
@@ -20,8 +21,8 @@ function App() {
 
   const filteredTransactions =
     filterCategory === "all"
-      ? transactions
-      : transactions.filter((t) => t.category === filterCategory);
+      ? monthTransactions
+      : monthTransactions.filter((t) => t.category === filterCategory);
   return (
     <div className="app">
       <TransactionForm setTransactions={setTransactions} />
@@ -33,6 +34,7 @@ function App() {
       />
 
       <SummaryCards transactions={monthTransactions} />
+      <Charts transactions={transactions} monthTransactions={monthTransactions} />
       <select
         value={filterCategory}
         onChange={(e) => setFilterCategory(e.target.value)}
