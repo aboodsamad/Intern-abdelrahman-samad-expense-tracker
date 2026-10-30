@@ -15,9 +15,10 @@ function App() {
     new Date().toISOString().slice(0, 7),
   );
 
-  const monthTransactions = transactions.filter(
-    (t) => t.date.slice(0, 7) === selectedMonth,
-  );
+  const monthTransactions =
+    selectedMonth === ""
+      ? transactions
+      : transactions.filter((t) => t.date.slice(0, 7) === selectedMonth);
 
   const filteredTransactions =
     filterCategory === "all"
@@ -32,9 +33,13 @@ function App() {
         value={selectedMonth}
         onChange={(e) => setSelectedMonth(e.target.value)}
       />
+      <button onClick={() => setSelectedMonth("")}>All months</button>
 
       <SummaryCards transactions={monthTransactions} />
-      <Charts transactions={transactions} monthTransactions={monthTransactions} />
+      <Charts
+        transactions={transactions}
+        monthTransactions={monthTransactions}
+      />
       <select
         value={filterCategory}
         onChange={(e) => setFilterCategory(e.target.value)}
